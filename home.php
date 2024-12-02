@@ -50,6 +50,12 @@ $final_grade_advanced_rows_formdata = display_final_grade_advanced_rows($pdo, $f
     <!-- Final Grade Calculator -->
     <div class="w3-container w3-padding-32 w3-center">
         <h2>Final Grade Calculator</h2>
+        <p class="w3-text-grey">Enter your current grade, final weight, and desired grade to calculate your final grade.</p>
+        <div class="w3-center">
+            <?php
+                check_final_grade_errors();
+            ?>
+        </div>
         <form action="includes/final_grade.inc.php" method="post" class="w3-container">
             <div class="w3-margin-bottom">
                 <label for="current-grade" class="w3-label w3-text-grey">Current Grade:</label>
@@ -80,6 +86,14 @@ $final_grade_advanced_rows_formdata = display_final_grade_advanced_rows($pdo, $f
     <!-- Advanced Final Grade Calculator -->
     <div class="w3-container w3-padding-32 w3-center">
         <h2>Advanced Final Grade Calculator</h2>
+        <p class="w3-text-grey">Enter up to 10 assignments or exams to calculate your final grade.</p>
+
+        <div class="w3-center">
+            <?php
+                check_final_grade_advanced_errors();
+            ?>
+        </div>
+
         <form action="includes/final_grade.inc.php" method="post" class="w3-container">
             <table class="w3-table-all w3-bordered w3-hoverable w3-centered" style="width: 100%;">
                 <tr>
