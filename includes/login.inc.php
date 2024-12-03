@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if (!is_username_wrong($result) && !verifyHash($login_password, $result["salt"], $result["passw"])) {
-            $errors["login_incorrect"] = "Incorrect password for user!";
+            $errors["login_incorrect"] = "Incorrect login info!";
             echo "Validation Error: Incorrect password for username: $login_username";
         }
 

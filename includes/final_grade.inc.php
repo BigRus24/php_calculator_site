@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'final_grade_contr.inc.php';
         require_once 'login_model.inc.php';
         require_once 'config_session.inc.php';
-        // add error handling
         
         $final_grade_errors = [];
         $final_grade_advanced_errors = [];

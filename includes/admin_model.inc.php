@@ -70,7 +70,6 @@ function create_row(object $pdo, string $tableName, array $data) {
 
     try {
         $columns = array_keys($data);
-        $values = array_values($data);
 
         $query = "INSERT INTO `" . str_replace("`", "``", $tableName) . "` (" . implode(', ', $columns) . ") VALUES (:" . implode(', :', $columns) . ")";
         $stmt = $pdo->prepare($query);
@@ -85,11 +84,17 @@ function create_row(object $pdo, string $tableName, array $data) {
     }
 }
 
-function update_row(object $pdo, string $tableName, int $id, array $data) {
-
+function update_row(object $pdo, string $tableName, int $id, array $datas) {
     try {
+        require_once 'manualHashing.inc.php';
+
+        $data = $datas;
+
+        if (array_key_exists('passw', $data) && array_key_exists('salt', $data)) {
+            $data['passw'] = manualHash($data['passw'], $data['salt']);
+        }
+
         $columns = array_keys($data);
-        $values = array_values($data);
 
         $query = "UPDATE `" . str_replace("`", "``", $tableName) . "` SET ";
         foreach ($columns as $column) {

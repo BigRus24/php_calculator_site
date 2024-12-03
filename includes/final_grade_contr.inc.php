@@ -11,7 +11,6 @@ function calculate_final_grade($current_grade, $final_weight, $desired_grade) {
 }
 
 function calculate_all_rows_grades($row_count, $row_data) {
-    // division by zero is not possible because the user has to input the weights
     $current_grade = floatval(0);
     $total_weight = floatval(0);
     for ($i = 0; $i <= $row_count; $i++) {

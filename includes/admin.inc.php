@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'dbh.inc.php';
         require_once 'admin_model.inc.php';
         require_once 'admin_contr.inc.php';
+        require_once 'config_session.inc.php';
 
         if (!isset($_SESSION['username']) or !$_SESSION['admin']) {
             header('Location: ../home.php');
@@ -22,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         unset($_POST["id"]);
         unset($_POST["table"]);
 
+        echo $_POST["id"];
+
         if (isset($_POST["create-row"])) {
             unset($_POST["create-row"]);
             create_row($pdo, $table, $_POST);
@@ -34,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             unset($_POST["update-row"]);
             update_row($pdo, $table, $id, $_POST);
         }
+
+        header("Location: ../admin.php");
 
     } catch (Exception $e) {
         echo $e->getMessage();

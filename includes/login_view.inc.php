@@ -2,15 +2,13 @@
 declare(strict_types=1);
 
 
-function output_username()
-{
+function output_username() {
     if (isset($_SESSION["username"])) {
         echo $_SESSION["username"];
     }
 }
 
-function check_login_errors()
-{
+function check_login_errors() {
     if (isset($_SESSION["errors_login"])) {
         $errors = $_SESSION["errors_login"];
         
